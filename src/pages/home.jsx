@@ -1,8 +1,13 @@
 import React, { Suspense } from "react";
 import { useNavigate } from "react-router-dom";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import Earth from "../components/earth3d";
+import { PerspectiveCamera } from "three";
 
+function CameraHelper() {
+  const camera = new PerspectiveCamera(60, 1, 1, 3);
+  return <cameraHelper args={[camera]} />;
+}
 function Home() {
   const navigate = useNavigate();
 
@@ -67,9 +72,9 @@ function Home() {
           />
           Your browser doesnt support the video tag
         </video> */}
-        <div className="absolute lg:top-1/3 mx-auto z-30 w-2/3">
-          <h1 className="text-5xl text-white text-center font-publicsans tracking-wider font-bold">
-            Indonesian's First monetizing geospatial data{" "}
+        <div className="absolute lg:top-1/3 mx-3 z-30 lg:w-1/3">
+          <h1 className="text-5xl text-right text-white font-poppins leading-snug tracking-wider font-bold">
+            Indonesian's First Monetizing Geospatial Data
           </h1>
           <div className="w-full flex justify-center mt-10">
             <button className="rounded-full bg-green-700 text-white px-3 py-1 text-lg hover:bg-green-500">
