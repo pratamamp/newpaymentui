@@ -29,10 +29,7 @@ function Login() {
 
   return (
     <section className="min-h-screen flex items-stretch text-white font-poppins">
-      <div
-        className=" w-full flex text-center px-2 z-0 lg:w-1/2"
-        style={{ backgroundColor: "#222232" }}
-      >
+      <div className="w-full flex text-center bg-[#222232] px-2 z-0 lg:w-1/2">
         <div
           className="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center"
           style={{

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useNavigate } from "react-router-dom";
+import { Canvas } from "@react-three/fiber";
+import Earth from "../components/earth3d";
 
 function Home() {
   const navigate = useNavigate();
@@ -35,15 +37,16 @@ function Home() {
         </div>
 
         <div className="hidden md:block">
-          <ul className="flex space-x-2 font-publicsans text-gray-100">
+          <ul className="flex space-x-2 items-center font-lato text-sm text-gray-700">
             <li>
-              <button className="py-1" onClick={() => navigate("/login")}>
-                Login
-              </button>
+              <button className="py-1">Register</button>
             </li>
             <li>
-              <button className="rounded-full bg-gradient-to-r from-black to-blue-600 px-3 py-1">
-                Register
+              <button
+                className="rounded-full border-2 px-4 text-gray-200 bg-blue-600 py-1"
+                onClick={() => navigate("/login")}
+              >
+                Login
               </button>
             </li>
           </ul>
@@ -51,33 +54,34 @@ function Home() {
       </div>
 
       {/* Content */}
-      <div className="bg-[#152151]">
-        <div className="relative overflow-hidden">
-          <img
-            src={process.env.PUBLIC_URL + "/indonesiamap.png"}
-            alt="indonesiamap"
-            className="top-1/2 right-1/3 lg:translate-x-1/3"
+      <div className="relative flex items-center justify-center bg-[#222232] h-[calc(100vh_-_3.2rem)] overflow-hidden">
+        {/* <video
+          autoPlay
+          loop
+          muted
+          className="absolute z-10 w-auto min-w-full min-h-full max-w-none"
+        >
+          <source
+            src={process.env.PUBLIC_URL + "/Earth.mp4"}
+            type="video/mp4"
           />
-          <div className="w-full h-40 absolute top-1/4 lg:w-1/2 lg:mx-12">
-            <h1 className="text-white text-2xl text-center font-poppins lg:text-5xl lg:text-left">
-              The First Indonesian's Data Providers for land information
-            </h1>
-            <p className=" text-gray-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium iusto aliquid aperiam quo provident, voluptate tempore
-              aspernatur repudiandae beatae facere. Quis laboriosam enim
-              ratione, corrupti eos at numquam aperiam dolore.
-            </p>
-            <div className="flex my-5 space-x-4">
-              <button className="rounded-full w-36 bg-white px-2 py-3 tracking-wider font-lato hover:bg-sky-100">
-                Buy Land
-              </button>
-              <button className="rounded-full w-36 px-2 border-2 text-white">
-                How to buy
-              </button>
-            </div>
+          Your browser doesnt support the video tag
+        </video> */}
+        <div className="absolute lg:top-1/3 mx-auto z-30 w-2/3">
+          <h1 className="text-5xl text-white text-center font-publicsans tracking-wider font-bold">
+            Indonesian's First monetizing geospatial data{" "}
+          </h1>
+          <div className="w-full flex justify-center mt-10">
+            <button className="rounded-full bg-green-700 text-white px-3 py-1 text-lg hover:bg-green-500">
+              Monetize Now
+            </button>
           </div>
         </div>
+        <Canvas>
+          <Suspense fallback={null}>
+            <Earth />
+          </Suspense>
+        </Canvas>
       </div>
     </div>
   );

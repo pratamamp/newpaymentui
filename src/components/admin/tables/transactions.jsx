@@ -6,7 +6,7 @@ function TableTransaction({ columns, data }) {
     useTable({ columns, data });
   return (
     <div className="py-2 align-middle m-2">
-      <div className="shadow overflow-hidden">
+      <div className="">
         <table
           {...getTableProps()}
           className="min-w-full divide-y divide-gray-400 table-auto"
