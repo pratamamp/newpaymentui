@@ -4,10 +4,6 @@ import { Canvas, useThree } from "@react-three/fiber";
 import Earth from "../components/earth3d";
 import { PerspectiveCamera } from "three";
 
-function CameraHelper() {
-  const camera = new PerspectiveCamera(60, 1, 1, 3);
-  return <cameraHelper args={[camera]} />;
-}
 function Home() {
   const navigate = useNavigate();
 
