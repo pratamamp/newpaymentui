@@ -69,7 +69,7 @@ function BoardHome() {
             <div className="p-2 flex flex-col justify-between bg-white rounded-lg col-span-2 md:col-span-1">
               <h2 className="text-sm w-full text-gray-400">My Transaction</h2>
               <div className="flex space-x-2">
-                <RiWalletLine className=" text-[#FFAB00] bg-[#FFB77E]/10 w-8 h-8 bg-[#FFB77E]/20 rounded-md p-1" />
+                <RiWalletLine className=" text-[#FFAB00] bg-[#FFB77E]/10 w-8 h-8 rounded-md p-1" />
                 <p className="text-xs font-thin text-gray-600">
                   Rp 300,000 <br /> <span className=" not-italic">orders</span>
                 </p>
