@@ -198,7 +198,7 @@ function Cart() {
         </div>
       </div>
 
-      <div className="lg:flex-1 mt-4 p-4">
+      <div className="lg:flex-1 my-4 p-4 lg:overflow-y-auto no-scrollbar">
         <div className="bg-violet-50 rounded-md px-4 space-y-4">
           <h2 className="text-xl pt-3">Payment Info</h2>
           <div className="border-2 rounded-md p-2 mt-4">
