@@ -60,7 +60,7 @@ function Cart() {
             .post(`${API_URL}/orders`, data, config)
             .then((response) => {
               const url = response.data.data.snap_url;
-              // window.open(url, "_blank");
+              window.open(url, "_self");
               console.log(response);
             })
             .catch((err) => {

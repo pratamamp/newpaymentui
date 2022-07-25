@@ -6,6 +6,7 @@ import { BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/auth";
+import { SiGentoo } from "react-icons/si";
 
 function Login() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function Login() {
 
   return (
     <section className="min-h-screen flex items-stretch text-white font-poppins">
-      <div className="w-full flex text-center bg-[#222232] px-2 z-0 lg:w-1/2">
+      <div className="w-full flex text-center bg-gradient-to-br from-slate-900 to-purple-900 px-2 z-0 lg:w-1/2">
         <div
           className="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center"
           style={{
@@ -41,14 +42,9 @@ function Login() {
         <div className="w-full py-2 z-20 h-screen ">
           <div className="flex justify-between">
             <div className="h-8 flex space-x-2 items-center my-2">
-              <img
-                src={process.env.PUBLIC_URL + "/logo.png"}
-                alt="logo atrbpn"
-                className=" h-8"
-              />
-              <span className="text-xs w-44 text-left">
-                Kementrian Agraris dan Tata Ruang <br /> Badan Pertanahan
-                Nasional
+              <SiGentoo className="w-10 h-10" />
+              <span className="text-2xl font-bold text-gray-100 font-lato">
+                PayLand
               </span>
             </div>
             <h2 className="text-xs flex">
@@ -142,8 +138,7 @@ function Login() {
             </form>
           </div>
           <h2 className="text-xs">
-            Copyright © 2022 Kementrian Agraris dan Tata Ruang Badan Pertanahan
-            Nasional | Powered By Esri Indonesia
+            Copyright © 2022 Payland | Powered By Esri Indonesia
           </h2>
         </div>
       </div>
