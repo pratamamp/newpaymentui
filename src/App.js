@@ -9,6 +9,7 @@ import { AuthProvider, useAuth } from "./hooks/auth";
 import Success from "./pages/admin/success";
 import MyFiles from "./pages/admin/files";
 import Home from "./pages/home";
+import License from "./pages/license";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/license" element={<License />} />
           <Route
             path="/admin"
             element={
