@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+import React, { useEffect, useState } from "react";
 import Lottie from "react-lottie";
 import { useNavigate } from "react-router-dom";
+import { getRandomId } from "../../helper/randomId";
 
 const API_URL = process.env.REACT_APP_API_GATEWAY;
 
@@ -12,8 +15,43 @@ function Success() {
     renderer: "svg",
     animationData: require("../../assets/paymentsuccess.json"),
   };
-  const [loadingDownload, setLoading] = useState(false)
 
+  useEffect(() => {
+    let objIds = JSON.parse(localStorage.getItem("cart"));
+    if (objIds.length > 0) {
+      let arrObjId = objIds.map((row, i) => {
+        return row.nib;
+      });
+
+      const userInfo = jwtDecode(localStorage.getItem("authInfo")).data;
+
+      document.getElementById("btntofiles").disabled = true;
+      let paramAPIExtract = {
+        spatial: {
+          nib: arrObjId,
+          restserviceurl:
+            "https://demo.esriindonesia.co.id/arcgis/rest/services/Hosted/persil_dummy_monetisasi/FeatureServer/1/query",
+          attribute: ["*"],
+        },
+        transaction: {
+          order_id: getRandomId(10000),
+          pdf: true,
+          shapefile: true,
+        },
+        user: {
+          id: userInfo.id,
+          name: userInfo.name,
+          email: userInfo.email,
+        },
+      };
+
+      axios
+        .post(API_URL + "/extract", paramAPIExtract)
+        .then(function (response) {
+          console.log(response.data);
+        });
+    }
+  }, []);
 
   return (
     <div className="bg-white h-screen">
@@ -28,8 +66,9 @@ function Success() {
             <br /> Your data is being processed and soon ready to download.
           </p>
           <button
+            id="btntofiles"
             className="rounded bg-blue-600 p-2 text-white font-lato"
-            onClick={() => navigation("/admin")}
+            onClick={() => navigation("/myfiles")}
           >
             To Download Page
           </button>
