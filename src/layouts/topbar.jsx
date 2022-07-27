@@ -6,12 +6,10 @@ import { BiSearchAlt } from "react-icons/bi";
 import { HiUserCircle } from "react-icons/hi";
 import { useCart } from "../hooks/cart";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "../hooks/auth";
 
 function Topbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const auth = useAuth();
 
   const { cartList } = useCart();
 
@@ -63,7 +61,7 @@ function Topbar() {
         )}
         <RiGridFill className="w-5 h-5" />
         <AiFillBell className="w-5 h-5" />
-        <button onClick={() => auth.signOut()}>
+        <button>
           <HiUserCircle className="w-6 h-6 text-blue-400" />
         </button>
       </div>

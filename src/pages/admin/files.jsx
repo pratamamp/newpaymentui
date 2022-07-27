@@ -8,13 +8,13 @@ function MyFiles() {
 
   return (
     <div className="h-full bg-slate-100 overflow-y-auto lg:items-center">
-      <button className="border-2 bg-white rounded-md m-10 px-4 py-1 bg-blue-500 text-white">
+      <button className="border-2 bg-white rounded-md m-10 text-xs px-4 py-1 bg-blue-500 text-white">
         Sync All
       </button>
 
-      <div className="overflow-x-auto relative mx-10 p-2 shadow-md sm:rounded-lg">
+      <div className="overflow-x-auto relative mx-10 shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-gray-100 uppercase bg-slate-400 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="p-4">
                 <div className="flex items-center">
@@ -72,9 +72,9 @@ function MyFiles() {
               <td className="py-4 px-6">20 MB</td>
               <td className="py-4 px-6">Jun 11</td>
               <td className="py-4 px-6">
-                <div className="text-center bg-blue-500 rounded-full px-3 py-1 text-white">
+                <button className="w-full bg-blue-500 rounded-full px-3 py-1 text-white">
                   View Map
-                </div>
+                </button>
               </td>
               <td className="py-4 px-6">
                 <a href="#">
@@ -106,9 +106,9 @@ function MyFiles() {
               <td className="py-4 px-6">4 MB</td>
               <td className="py-4 px-6">Jun 3</td>
               <td className="py-4 px-6">
-                <div className="text-center bg-blue-500 rounded-full px-3 py-1 text-white">
+                <button className="w-full bg-blue-500 rounded-full px-3 py-1 text-white">
                   View Map
-                </div>
+                </button>
               </td>
               <td className="py-4 px-6">
                 <a href="#">
@@ -153,7 +153,7 @@ function MyFiles() {
           </tbody>
         </table>
         <nav
-          className="flex justify-between items-center pt-4"
+          className="flex justify-between items-center p-4"
           aria-label="Table navigation"
         >
           <span className="text-sm font-normal text-gray-500">

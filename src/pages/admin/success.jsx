@@ -5,7 +5,8 @@ import Lottie from "react-lottie";
 import { useNavigate } from "react-router-dom";
 import { getRandomId } from "../../helper/randomId";
 
-const API_URL = process.env.REACT_APP_API_GATEWAY;
+// const API_URL = process.env.REACT_APP_API_GATEWAY;
+const API_URL = "https://bestie.ngrok.io";
 
 function Success() {
   const navigation = useNavigate();
@@ -25,7 +26,7 @@ function Success() {
 
       const userInfo = jwtDecode(localStorage.getItem("authInfo")).data;
 
-      document.getElementById("btntofiles").disabled = true;
+      // document.getElementById("btntofiles").disabled = true;
       let paramAPIExtract = {
         spatial: {
           nib: arrObjId,
@@ -49,6 +50,7 @@ function Success() {
         .post(API_URL + "/extract", paramAPIExtract)
         .then(function (response) {
           console.log(response.data);
+          // document.getElementById("btntofiles").disabled = false;
         });
     }
   }, []);
@@ -68,7 +70,7 @@ function Success() {
           <button
             id="btntofiles"
             className="rounded bg-blue-600 p-2 text-white font-lato"
-            onClick={() => navigation("/myfiles")}
+            onClick={() => navigation("/admin/myfiles")}
           >
             To Download Page
           </button>

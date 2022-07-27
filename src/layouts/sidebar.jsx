@@ -4,25 +4,26 @@ import { GiCubes } from "react-icons/gi";
 import { ImUser } from "react-icons/im";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useLocation, useNavigate } from "react-router-dom";
+import { BiExit } from "react-icons/bi";
+import { useAuth } from "../hooks/auth";
+import { SiGentoo } from "react-icons/si";
 
 function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const auth = useAuth();
 
   return (
-    <div className=" hidden w-[18%] bg-white border-r-2 justify-center border-slate-200 lg:block">
-      <div className="flex items-center border-b-2 border-gray-100 py-2">
-        <img
-          src={process.env.PUBLIC_URL + "/logo.png"}
-          alt="logo atrbpn"
-          className="h-12 mr-1"
-        />
-        <span className="text-xs text-left">
-          Kementrian Agraris <br /> dan Tata Ruang <br /> Badan Pertanahan
-          Nasional
+    <div className=" hidden w-[18%] bg-white border-r-2 justify-center  border-slate-200 lg:block">
+      <div className="flex items-center p-2">
+        <div aria-hidden="true" className="flex space-x-1">
+          <SiGentoo className="w-6 h-6 text-orange-400" />
+        </div>
+        <span className="text-xl ml-2 font-bold text-orange-300 font-lato">
+          PayLand
         </span>
       </div>
-      <div className="pl-2 py-2 w-full">
+      <div className="pl-2 py-2 w-full h-[calc(100vh_-_5.5rem)]">
         <ul className="w-full flex flex-col space-y-4 text-gray-400 text-sm">
           <li
             className={`flex ${
@@ -89,6 +90,15 @@ function Sidebar() {
           <span className="text-md text-h2color font-semibold">Log Out</span>
         </button>
       </div> */}
+      <div className="w-full pl-2 py-2">
+        <button
+          className="flex space-x-5 items-center text-gray-400 text-sm"
+          onClick={() => auth.signOut()}
+        >
+          <BiExit className="h-6 w-auto" />
+          <span className="font-bold tracking-wider">Logout</span>
+        </button>
+      </div>
     </div>
   );
 }
