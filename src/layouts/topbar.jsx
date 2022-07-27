@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RiGridFill } from "react-icons/ri";
 import { AiFillBell } from "react-icons/ai";
 import { BsFillCartFill, BsCartX } from "react-icons/bs";

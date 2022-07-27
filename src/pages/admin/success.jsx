@@ -2,31 +2,38 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import React, { useEffect, useState } from "react";
 import Lottie from "react-lottie";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { getRandomId } from "../../helper/randomId";
+import { useCart } from "../../hooks/cart";
+import { useAuth } from "../../hooks/auth";
 
 // const API_URL = process.env.REACT_APP_API_GATEWAY;
 const API_URL = "https://bestie.ngrok.io";
 
 function Success() {
+  const { cartList } = useCart();
   const navigation = useNavigate();
+  const auth = useAuth();
+
   const lottieConfig = {
     loop: false,
     autoplay: true,
     renderer: "svg",
     animationData: require("../../assets/paymentsuccess.json"),
   };
+  const [searchParams] = useSearchParams();
+  const [userInfo, setUser] = useState();
 
   useEffect(() => {
-    let objIds = JSON.parse(localStorage.getItem("cart"));
-    if (objIds.length > 0) {
-      let arrObjId = objIds.map((row, i) => {
-        return row.nib;
-      });
+    startProcessExtract();
+  }, []);
 
-      const userInfo = jwtDecode(localStorage.getItem("authInfo")).data;
-
-      // document.getElementById("btntofiles").disabled = true;
+  function startProcessExtract() {
+    let arrObjId = cartList.map((row, i) => {
+      if (row) return row.nib;
+    });
+    let userInfo = jwtDecode(auth.user.token).data;
+    if (userInfo) {
       let paramAPIExtract = {
         spatial: {
           nib: arrObjId,
@@ -35,7 +42,7 @@ function Success() {
           attribute: ["*"],
         },
         transaction: {
-          order_id: getRandomId(10000),
+          order_id: searchParams.get("id") || getRandomId(10000),
           pdf: true,
           shapefile: true,
         },
@@ -45,16 +52,14 @@ function Success() {
           email: userInfo.email,
         },
       };
-
       axios
         .post(API_URL + "/extract", paramAPIExtract)
         .then(function (response) {
           console.log(response.data);
-          // document.getElementById("btntofiles").disabled = false;
         });
+      // console.log(paramAPIExtract);
     }
-  }, []);
-
+  }
   return (
     <div className="bg-white h-screen">
       <div className="p-6 md:mx-auto">

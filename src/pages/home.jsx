@@ -15,7 +15,7 @@ function Home() {
     mode: "scroll",
   };
   return (
-    <div className="relative w-full bg-gradient-to-br from-slate-900 to-purple-900">
+    <div className="relative w-full h-screen bg-gradient-to-br from-slate-900 to-purple-900">
       <header>
         <nav className="fixed inset-x-0 z-10 w-full border-b bg-white md:absolute md:bg-transparent">
           <div className="container m-auto px-2 md:px-12 lg:px-7">
@@ -91,7 +91,7 @@ function Home() {
       </header>
 
       <section>
-        <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:py-24">
+        <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:pt-24">
           <div className="flex flex-wrap items-center mx-auto max-w-7xl">
             <div className="w-full lg:max-w-lg lg:w-1/2 rounded-xl">
               <div>
@@ -132,8 +132,6 @@ function Home() {
           </div>
         </div>
       </section>
-
-      <div className="py-16 px-10"></div>
     </div>
   );
 }
