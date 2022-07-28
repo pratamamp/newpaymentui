@@ -33,7 +33,7 @@ function Topbar() {
             </form>
           </div>
         )}
-        {location.pathname === "/admin/success" && (
+        {/* {location.pathname === "/admin/success" && (
           <div className="flex items-center py-2">
             <img
               src={process.env.PUBLIC_URL + "/logo.png"}
@@ -45,7 +45,7 @@ function Topbar() {
               Nasional
             </span>
           </div>
-        )}
+        )} */}
       </div>
 
       <div className="flex space-x-2 items-center text-gray-400 mx-2">
