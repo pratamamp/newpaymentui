@@ -32,8 +32,6 @@ export function AuthProvider({ children }) {
         .then((response) => {
           if (response.data) {
             const token = response.data.data.token;
-            const decode = jwtDecode(token);
-
             setUser({
               token,
             });
@@ -67,8 +65,4 @@ export function AuthProvider({ children }) {
 
 export function useAuth() {
   return useContext(AuthContext);
-}
-
-export function test() {
-  return null
 }

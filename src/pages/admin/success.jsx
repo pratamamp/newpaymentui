@@ -2,22 +2,35 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import React, { useEffect, useRef, useState } from "react";
 import Lottie from "react-lottie";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { getRandomId } from "../../helper/randomId";
+<<<<<<< HEAD
 import { useAuth } from "../../hooks/auth";
 import { useCart } from "../../hooks/cart";
+=======
+import { useCart } from "../../hooks/cart";
+import { useAuth } from "../../hooks/auth";
+
+>>>>>>> 8a316d76f0e3ac96ce9cf9e2fcfbfce486bc564c
 // const API_URL = process.env.REACT_APP_API_GATEWAY;
 const API_URL = process.env.REACT_APP_API_EXTRACT;
 
 function Success() {
+<<<<<<< HEAD
   const ref = useRef(false);
+=======
+  const { cartList } = useCart();
+>>>>>>> 8a316d76f0e3ac96ce9cf9e2fcfbfce486bc564c
   const navigation = useNavigate();
+  const auth = useAuth();
+
   const lottieConfig = {
     loop: false,
     autoplay: true,
     renderer: "svg",
     animationData: require("../../assets/paymentsuccess.json"),
   };
+<<<<<<< HEAD
   const auth = useAuth();
   const { cartList } = useCart();
   const [processing, setProcessing] = useState(false);
@@ -71,6 +84,47 @@ function Success() {
     };
   }, []);
 
+=======
+  const [searchParams] = useSearchParams();
+  const [userInfo, setUser] = useState();
+
+  useEffect(() => {
+    startProcessExtract();
+  }, []);
+
+  function startProcessExtract() {
+    let arrObjId = cartList.map((row, i) => {
+      if (row) return row.nib;
+    });
+    let userInfo = jwtDecode(auth.user.token).data;
+    if (userInfo) {
+      let paramAPIExtract = {
+        spatial: {
+          nib: arrObjId,
+          restserviceurl:
+            "https://demo.esriindonesia.co.id/arcgis/rest/services/Hosted/persil_dummy_monetisasi/FeatureServer/1/query",
+          attribute: ["*"],
+        },
+        transaction: {
+          order_id: searchParams.get("id") || getRandomId(10000),
+          pdf: true,
+          shapefile: true,
+        },
+        user: {
+          id: userInfo.id,
+          name: userInfo.name,
+          email: userInfo.email,
+        },
+      };
+      axios
+        .post(API_URL + "/extract", paramAPIExtract)
+        .then(function (response) {
+          console.log(response.data);
+        });
+      // console.log(paramAPIExtract);
+    }
+  }
+>>>>>>> 8a316d76f0e3ac96ce9cf9e2fcfbfce486bc564c
   return (
     <div className="bg-white h-screen">
       <div className="p-6 md:mx-auto">
