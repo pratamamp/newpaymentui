@@ -39,14 +39,19 @@ function MyFiles() {
       console.log("cleanup");
     };
   }, []);
+
+  const openInNewTab = (url) => {
+    window.open(`https://${url}`, "_blank", "noopener, noreferrer");
+  };
+
   return (
     <div className="h-full bg-slate-100 overflow-y-auto lg:items-center">
-      <button className="border-2 bg-white rounded-md m-10 text-xs px-4 py-1 bg-blue-500 text-white">
-        Sync All
+      <button className="border-2 border-blue-300 rounded-full m-10 text-sm px-4 py-1 bg-gray-100 text-blue-300">
+        refresh
       </button>
       <div className="overflow-x-auto relative mx-10 h-[calc(100vh_-_15rem)] shadow-md sm:rounded-lg lg:overflow-y-auto">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-100 uppercase bg-slate-400">
+          <thead className="text-xs text-gray-100 uppercase bg-slate-600">
             <tr>
               <th scope="col" className="p-4">
                 <div className="flex items-center">
@@ -69,7 +74,7 @@ function MyFiles() {
               <th scope="col" className="py-3 px-6">
                 License
               </th>
-              <th scope="col" className="py-3 px-6">
+              <th scope="col" className="py-3 px-6 text-center">
                 PDF file
               </th>
               <th scope="col" className="py-3 px-6 text-center">
@@ -80,7 +85,7 @@ function MyFiles() {
               </th>
             </tr>
           </thead>
-          {downloadList && console.log(downloadList)}
+
           <tbody>
             {downloadList &&
               downloadList.map((row, i) => {
@@ -111,22 +116,31 @@ function MyFiles() {
                     >
                       {row.id_order}
                     </th>
-                    {}
                     <td className="py-4 px-6">
                       {`${monthName[tanggal.getMonth()]} ${tanggal.getDate()}`}
                     </td>
                     <td className="py-4 px-6">{row.license}</td>
-                    <td className="py-4 px-6">
-                      {row.pdf.map((pdf) => {
+
+                    <td className="p-4 text-center flex flex-col space-y-2">
+                      {row.pdf.map((pdf, index) => {
                         return (
-                          <button className="w-full bg-red-500 rounded-full px-3 py-1 text-white">
+                          <button
+                            key={index}
+                            className="border-2 border-orange-200 rounded-full px-3 py-1 text-orange-400 text-xs border-2"
+                            onClick={() => openInNewTab(pdf)}
+                          >
                             Download
                           </button>
                         );
                       })}
                     </td>
-                    <td className="py-4 px-6">
-                      <button className="w-full bg-green-500 rounded-full px-3 py-1 text-white">
+                    <td className="p-4">
+                      <button
+                        onClick={() =>
+                          window.open(`https://${row.shapefile[0]}`, "_self")
+                        }
+                        className="w-full bg-blue-500 rounded-full px-3 py-1 text-blue-100 text-xs border-2 border-blue-400"
+                      >
                         Download
                       </button>
                     </td>

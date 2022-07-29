@@ -55,7 +55,7 @@ function Success() {
         console.log(response.data);
         document.getElementById("btntofiles").disabled = false;
         setProcessing(false);
-        setCartList(null);
+        setCartList([]);
       })
       .catch(function (err) {
         setProcessing(false);
