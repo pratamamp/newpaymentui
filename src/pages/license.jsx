@@ -60,7 +60,7 @@ function License() {
                     autoComplete="off"
                     onChange={handleChange}
                     value={checkLicense}
-                    className="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                    className="block w-full px-1 py-2 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                     placeholder="Input your License Code"
                   />
                 </div>
@@ -83,9 +83,9 @@ function License() {
               </div>
             )}
 
-            <div className="hidden w-full order-first lg:block">
+            <div className="w-full h-96 order-first lg:block">
               {validLicense ? (
-                <Certificate className="h-96 w-full" />
+                <Certificate className="h-full" />
               ) : (
                 <img
                   className="h-full bg-cover rounded-l-lg object-cover"
