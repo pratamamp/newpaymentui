@@ -20,7 +20,7 @@ function Success() {
   };
 
   const auth = useAuth();
-  const { cartList } = useCart();
+  const { cartList, setCartList } = useCart();
   const [processing, setProcessing] = useState(false);
 
   function extractData() {
@@ -55,6 +55,7 @@ function Success() {
         console.log(response.data);
         document.getElementById("btntofiles").disabled = false;
         setProcessing(false);
+        setCartList(null);
       })
       .catch(function (err) {
         setProcessing(false);
