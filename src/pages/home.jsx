@@ -3,6 +3,7 @@ import Lottie from "react-lottie";
 import { SiGentoo } from "react-icons/si";
 import { Link, useNavigate } from "react-router-dom";
 import MidtransLogo from "../assets/logomidtrans";
+import { TiThMenu } from "react-icons/ti";
 
 function Home() {
   const navigate = useNavigate();
@@ -15,82 +16,71 @@ function Home() {
     mode: "scroll",
   };
   return (
-    <div className="relative w-full h-screen bg-gradient-to-br from-slate-900 to-purple-900">
-      <header>
-        <nav className="fixed inset-x-0 z-10 w-full border-b bg-white md:absolute md:bg-transparent">
-          <div className="container m-auto px-2 md:px-12 lg:px-7">
-            <div className="flex flex-wrap items-center justify-between py-4 gap-6 md:py-4 md:gap-0">
-              <div className="w-full px-6 flex justify-between lg:w-max md:px-0">
-                <a
-                  href="#"
-                  aria-label="logo"
-                  className="flex space-x-2 items-center"
-                >
-                  <div aria-hidden="true" className="flex space-x-1">
-                    <SiGentoo className="w-10 h-10 text-white" />
-                  </div>
-                  <span className="text-2xl font-bold text-gray-100 font-lato">
-                    PayLand
-                  </span>
+    <>
+      <nav className="bg-gradient-to-r from-blue-900 to-purple-900 fixed inset-x-0 z-50 ">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex justify-between">
+            <div className="flex space-x-4">
+              {/* logo */}
+              <div>
+                <a href="#" className="flex items-center py-5 px-2 text-white">
+                  <SiGentoo className="w-10 h-10" />
+                  <span className="mx-3 text-xl font-bold">PayLand</span>
                 </a>
-                <button
-                  aria-label="humburger"
-                  id="hamburger"
-                  className="relative w-10 h-10 -mr-2 lg:hidden"
-                >
-                  <div
-                    aria-hidden="true"
-                    id="line"
-                    className="inset-0 w-6 h-0.5 m-auto rounded bg-yellow-900 transtion duration-300"
-                  />
-                  <div
-                    aria-hidden="true"
-                    id="line2"
-                    className="inset-0 w-6 h-0.5 mt-2 m-auto rounded bg-yellow-900 transtion duration-300"
-                  />
-                </button>
               </div>
-              <div className="hidden w-full lg:flex flex-wrap justify-end items-center space-y-6 p-6 rounded-xl bg-white md:space-y-0 md:p-0 md:flex-nowrap md:bg-transparent lg:w-7/12">
-                <div className="text-gray-300 lg:pr-4">
-                  <ul className="space-y-6 tracking-wide font-medium text-sm md:flex md:space-y-0">
-                    <li className="block md:px-4 transition hover:text-sky-300">
-                      <Link to="/">Home</Link>
-                    </li>
-                    <li className="block md:px-4 transition hover:text-sky-300">
-                      <Link to="/about">About</Link>
-                    </li>
-                    <li className="block md:px-4 transition hover:text-sky-300">
-                      <Link to="/license">License</Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="w-full space-y-2 border-sky-200 lg:space-y-0 md:w-max lg:border-l">
-                  <button
-                    type="button"
-                    title="Start Sign up"
-                    className="w-full py-3 px-6 text-center rounded-full transition active:bg-yellow-200 focus:bg-yellow-100 sm:w-max"
-                  >
-                    <span className="block text-sky-300 font-semibold text-sm hover:text-gray-100">
-                      Sign up
-                    </span>
-                  </button>
-                  <button
-                    type="button"
-                    title="Start Contact"
-                    className="w-full py-3 px-6 text-center rounded-full transition bg-blue-500 hover:bg-blue-300 sm:w-max"
-                  >
-                    <span className="block text-gray-100 font-semibold text-sm">
-                      Contact Us
-                    </span>
-                  </button>
-                </div>
+              {/* primary nav */}
+              <div className="hidden md:flex items-center space-x-1">
+                <ul className="space-y-6 tracking-wide font-medium text-sm md:flex md:space-y-0">
+                  <li className="text-gray-300 md:px-4 transition hover:text-sky-300">
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li className="text-gray-300 md:px-4 transition hover:text-sky-300">
+                    <Link to="/about">About</Link>
+                  </li>
+                  <li className="text-gray-300 md:px-4 transition hover:text-sky-300">
+                    <Link to="/license">License</Link>
+                  </li>
+                </ul>
               </div>
             </div>
+            {/* secondary nav */}
+            <div className="hidden md:flex items-center space-x-1">
+              <a href="" className="py-5 px-3 text-gray-300">
+                Login
+              </a>
+              <a
+                href=""
+                className="py-2 px-3 bg-blue-400 text-white hover:bg-yellow-300 text-sm hover:text-yellow-800 rounded-full transition duration-300"
+              >
+                Signup
+              </a>
+            </div>
+            {/* mobile button goes here */}
+            <div className="md:hidden flex items-center">
+              <button className="mobile-menu-button focus:outline-none">
+                <TiThMenu className="w-10 h-auto text-white" />
+              </button>
+            </div>
           </div>
-        </nav>
-      </header>
-
-      <section>
+        </div>
+        {/* mobile menu */}
+        <div className="mobile-menu hidden md:hidden">
+          <a href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">
+            Home
+          </a>
+          <a href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">
+            Contact
+          </a>
+          <a href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">
+            Pricing
+          </a>
+          <a href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">
+            Features
+          </a>
+        </div>
+      </nav>
+      {/* content goes here */}
+      <div className="bg-gradient-to-r from-blue-900 to-purple-900 h-screen p-3 overflow-y-auto no-scrollbar">
         <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:pt-24">
           <div className="flex flex-wrap items-center mx-auto max-w-7xl">
             <div className="w-full lg:max-w-lg lg:w-1/2 rounded-xl">
@@ -131,8 +121,8 @@ function Home() {
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </>
   );
 }
 
