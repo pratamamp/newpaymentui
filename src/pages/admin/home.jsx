@@ -23,7 +23,7 @@ function BoardHome() {
   return (
     <div className="h-[calc(100vh_-_5rem)] bg-[#F4F7FE]/80 overflow-y-auto no-scrollbar lg:flex">
       <div className="no-scrollbar lg:w-2/3 lg:mt-4 lg:overflow-y-auto">
-        <div className="px-4 mt-2 flex flex-col">
+        <div className="px-4 mt-4 flex flex-col">
           <button
             className=" shadow-sky-500 shadow-sm flex space-x-2 rounded-md border border-gray-200 p-2 text-slate-400 bg-blue-50 self-end hover:bg-sky-500 hover:text-gray-100 lg:mb-12"
             onClick={onAddItem}
@@ -33,7 +33,7 @@ function BoardHome() {
             </span>
             <p className="text-xs font-lato">Add Item</p>
           </button>
-          <h1 className="lg:text-2xl">Analytics</h1>
+          <h1 className="header-h2 lg:text-2xl">Analytics</h1>
           <div className="my-6 grid gap-4 grid-cols-2 md:grid-cols-3">
             <div className=" bg-white rounded-lg col-span-2">
               <h2 className="p-3 text-sm text-gray-400">
@@ -90,11 +90,11 @@ function BoardHome() {
 
         <div className="px-4">
           <div className="my-6 flex justify-between items-center">
-            <h1 className="lg:text-2xl">My Downloadable</h1>
+            <h1 className="header-h2 lg:text-2xl">My Downloadable</h1>
             <p className="text-xs text-gray-400">See all</p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          <div className="grid gap-4 my-6 sm:grid-cols-2 md:grid-cols-3">
             <div className=" bg-white rounded-md h-20 items-center p-2 flex justify-between">
               <div className="rounded-full w-8 h-8 bg-gray-100">
                 <VscFilePdf className=" w-full h-full p-1 text-red-600" />
@@ -135,7 +135,7 @@ function BoardHome() {
         </div>
 
         <div className="px-4">
-          <h1 className="lg:text-2xl">Recent Transactions</h1>
+          <h1 className="header-h2 lg:text-2xl">Recent Transactions</h1>
           <div className="my-4 w-full rounded-md bg-white">
             <TableTransaction columns={column} data={data} />
           </div>
@@ -145,23 +145,25 @@ function BoardHome() {
       <div className="no-scrollbar flex space-y-4 flex-col mx-4 lg:flex-1 lg:mt-8 lg:overflow-y-auto">
         <div className="rounded-md p-2 bg-white w-full">
           <h2 className="font-bold">News</h2>
-          <div className="w-full my-3 space-y-2 text-gray-400">
+          <div className="w-full my-3 space-y-2 text-gray-400 text-sm">
             <div className="flex space-x-3">
               <RiMessage2Line className="w-8 h-8" />
               <p className="text-left">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. !
+                China Releases The World's Most Detailed Geological Map Of The
+                Moon
               </p>
             </div>
             <div className="flex space-x-3">
               <RiMessage2Line className="w-8 h-8" />
               <p className="text-left">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. !
+                Goa Batu Hapu Kalimantan Selatan, Situs Geologi dengan Banyak
+                Pesona
               </p>
             </div>
             <div className="flex space-x-3">
               <RiMessage2Line className="w-8 h-8" />
               <p className="text-left">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. !
+                Gempa M 5,8 Mamuju, Begini Analisis Kondisi Geologi dari PVMBG
               </p>
             </div>
           </div>

@@ -61,7 +61,6 @@ function Cart() {
             .then((response) => {
               const url = response.data.data.snap_url;
               window.open(url, "_self");
-              console.log(response);
             })
             .catch((err) => {
               console.error(err);

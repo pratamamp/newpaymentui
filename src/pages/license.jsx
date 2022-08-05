@@ -1,10 +1,14 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { TbLicense } from "react-icons/tb";
 import Lottie from "react-lottie";
 import Certificate from "../components/cerfiticate";
 
+const API_URL = process.env.REACT_APP_API_EXTRACT;
+
 function License() {
-  const [checkLicense, setCheck] = useState(false);
+  const [checkLicense, setCheck] = useState("");
+  const [validLicense, setValidLicense] = useState(false);
 
   const lottieConfig = {
     loop: false,
@@ -12,13 +16,25 @@ function License() {
     renderer: "svg",
     animationData: require("../assets/congrats2.json"),
   };
-  const submitLicense = () => {
-    setCheck(!checkLicense);
-  };
 
-  useEffect(() => {
-    console.log(checkLicense);
-  }, [checkLicense]);
+  function handleChange(event) {
+    setCheck(event.target.value);
+  }
+
+  function submitLicense(event) {
+    event.preventDefault();
+
+    axios
+      .post(`${API_URL}/api/license/${checkLicense}`)
+      .then((response) => {
+        setValidLicense(true);
+      })
+      .catch((err) => {
+        console.error("license not found");
+        setValidLicense(false);
+      });
+  }
+
   return (
     <div className="flex justify-center items-center h-screen bg-magenta-50">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24">
@@ -38,10 +54,13 @@ function License() {
                 <div>
                   <label htmlFor="license" className="sr-only"></label>
                   <input
+                    id="license"
                     type="text"
                     name="license"
-                    id="license"
-                    className="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                    autoComplete="off"
+                    onChange={handleChange}
+                    value={checkLicense}
+                    className="block w-full px-1 py-2 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                     placeholder="Input your License Code"
                   />
                 </div>
@@ -49,7 +68,7 @@ function License() {
                 <div className="flex flex-col mt-4 lg:space-y-2">
                   <button
                     type="button"
-                    onClick={() => submitLicense()}
+                    onClick={submitLicense}
                     className="flex items-center justify-center w-full px-10 py-2 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-400 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
                     Check
@@ -58,17 +77,22 @@ function License() {
               </div>
             </div>
 
-            {/* <div className="absolute bottom-1 w-28 left-10">
-              <Lottie options={lottieConfig} height={100} />
-            </div> */}
+            {validLicense && (
+              <div className="absolute top-1/2 left-[15%]">
+                <Lottie options={lottieConfig} height={200} />
+              </div>
+            )}
 
-            <div className="hidden w-full order-first lg:block">
-              <img
-                className="h-full bg-cover rounded-l-lg object-cover"
-                src="https://images.unsplash.com/photo-1532154187607-d766ed024aac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
-                alt=""
-              />
-              {/* <Certificate className="h-96 w-full" /> */}
+            <div className="w-full h-96 order-first lg:block">
+              {validLicense ? (
+                <Certificate className="h-full" />
+              ) : (
+                <img
+                  className="h-full bg-cover rounded-l-lg object-cover"
+                  src="https://images.unsplash.com/photo-1532154187607-d766ed024aac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+                  alt=""
+                />
+              )}
             </div>
           </div>
         </div>

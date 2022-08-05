@@ -134,13 +134,15 @@ function BoardHome() {
             <div className="flex space-x-3">
               <RiMessage2Line className="w-8 h-8" />
               <p className="text-left">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. !
+                China Releases The World's Most Detailed Geological Map Of The
+                Moon
               </p>
             </div>
             <div className="flex space-x-3">
               <RiMessage2Line className="w-8 h-8" />
               <p className="text-left">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. !
+                Goa Batu Hapu Kalimantan Selatan, Situs Geologi dengan Banyak
+                Pesona
               </p>
             </div>
             <div className="flex space-x-3">
