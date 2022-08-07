@@ -45,9 +45,9 @@ function Home() {
             </div>
             {/* secondary nav */}
             <div className="hidden md:flex items-center space-x-1">
-              <a href="" className="py-5 px-3 text-gray-300">
-                Login
-              </a>
+              <Link to="/login">
+                <a className="py-5 px-3 text-gray-300">Login</a>
+              </Link>
               <a
                 href=""
                 className="py-2 px-3 bg-blue-400 text-white hover:bg-yellow-300 text-sm hover:text-yellow-800 rounded-full transition duration-300"

@@ -63,7 +63,8 @@ function Cart() {
               window.open(url, "_self");
             })
             .catch((err) => {
-              navigate("/login", { replace: true });
+              console.error(err);
+              // navigate("/login", { replace: true });
             });
         }
       }
