@@ -17,7 +17,7 @@ export function AuthProvider({ children }) {
   });
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/board";
+  const from = location.state?.from?.pathname || "/admin";
 
   const signIn = async (newUser) => {
     // setUser(newUser);

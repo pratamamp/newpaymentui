@@ -8,6 +8,7 @@ module.exports = {
         lato: ["Lato", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
         publicsans: ["Public Sans", "sans-serif"],
+        windsong: ["WindSong", "cursive"],
       },
       colors: {
         transparent: "transparent",
