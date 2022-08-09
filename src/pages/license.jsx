@@ -1,63 +1,76 @@
-import React from "react";
-import Ornamen from "../components/ornamen";
+import axios from "axios";
+import React, { useState } from "react";
+import Certificate from "../components/certificate";
+
+const API_URL = process.env.REACT_APP_API_EXTRACT;
 
 function License() {
+  const [licenseSuccess, setLicense] = useState(false);
+  const [inputText, setInput] = useState("");
+
+  function submitLicense(e) {
+    e.preventDefault();
+
+    inputText &&
+      axios
+        .post(`${API_URL}/api/license/${e.target[0].value}`)
+        .then((response) => {
+          setLicense(true);
+          console.log("license exist!");
+        })
+        .catch((err) => {
+          console.error("License not found");
+          setLicense(false);
+        });
+  }
+
+  function onInputChange(event) {
+    setInput(event.target.value);
+  }
+
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-br from-purple-800 to-blue-400">
-      <div className="w-11/12 h-[calc(100vh_-_5rem)] max-w-3xl bg-gradient-to-br from-white to-gray-300 rounded-xl relative overflow-clip shadow-white drop-shadow-lg blur-md md:filter-none">
-        <Ornamen className=" w-2/3 h-full absolute -right-4 -top-8" />
-        <div className="flex justify-center items-center w-full h-full select-none">
-          <div className="border-2 border-yellow-400 w-[97%] h-[97%] rounded-xl">
-            <div className="w-1/2 mx-8 mt-4 border-b-[2px] border-slate-400">
-              <h1 className=" text-4xl tracking-wide">CERTIFICATE</h1>
-              <p className="text-[#cd526a] font-bold text-lg tracking-widest">
-                OF APPRECIATION
-              </p>
-            </div>
-            <h2 className="mx-8 my-4 text-3xl font-extrabold font-publicsans tracking-widest">
-              LAND BUYING
-            </h2>
+      {licenseSuccess ? (
+        <Certificate />
+      ) : (
+        <>
+          <img
+            className="absolute inset-0 w-full h-full object-cover object-top"
+            src={process.env.PUBLIC_URL + "/bg-map.jpg"}
+            alt="map"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full bg-purple-900 bg-opacity-10 backdrop-blur-sm"
+          />
+          <div className="relative container m-auto px-6 md:px-12 lg:px-6">
+            <div className="mb-12 flex flex-col items-center h-screen pt-40 space-y-16 md:mb-20 md:pt-56 lg:w-8/12 lg:mx-auto">
+              <h1 className="text-white text-center text-3xl font-bold sm:text-4xl md:text-5xl">
+                Don't let anyone recognize the assets you've bought.
+              </h1>
 
-            <div className="mt-8 bg-gradient-to-r from-[#0777bd] to-[#a50fea] via-[#6dbfe2] w-3/5 -mx-10 rounded-3xl">
-              <h2 className="text-white px-[4.5rem] font-lato font-bold tracking-wider uppercase py-1 text-sm">
-                Proudly present to
-              </h2>
-            </div>
-
-            <h1 className="text-7xl mt-8 font-windsong mx-8 font-semibold text-[#df4aad]">
-              Esri dev
-            </h1>
-            <h2 className="mx-8 my-3 font-bold tracking-wider">NIB 88394849</h2>
-            <p className="mx-8 text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex
-              molestiae, officia nesciunt, beatae, debitis voluptatem deserunt
-              quam consectetur laboriosam perspiciatis nostrum. Rem sed placeat
-              sequi molestiae, harum maiores hic aliquam!
-            </p>
-            <div className="w-full flex justify-between my-4">
-              <div className="mx-8 w-1/2 justify-between items-center flex">
-                <h2>July 8, 2022</h2>
-                <div>
-                  <img
-                    src={process.env.PUBLIC_URL + "/dangermond.png"}
-                    alt="logoatrbpn"
-                    className="h-12 mr-1"
+              <form className="w-9/12" onSubmit={submitLicense}>
+                <div className="relative">
+                  <input
+                    type="search"
+                    id="search"
+                    className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="License Code"
+                    required
+                    onChange={onInputChange}
                   />
-                  <p className="text-center">Jack Kirby</p>
+                  <button
+                    type="submit"
+                    className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Check
+                  </button>
                 </div>
-              </div>
-
-              <div className="absolute right-5 bottom-5">
-                <img
-                  src={process.env.PUBLIC_URL + "/esrilogo.png"}
-                  alt="esri logo"
-                  className="h-6 mr-1"
-                />
-              </div>
+              </form>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 }

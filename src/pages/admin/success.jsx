@@ -12,6 +12,7 @@ const API_URL = process.env.REACT_APP_API_EXTRACT;
 
 function Success() {
   const navigation = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const lottieConfig = {
     loop: false,
     autoplay: true,
@@ -68,6 +69,9 @@ function Success() {
       extractData();
     }
 
+    if (searchParams) {
+      console.log(searchParams);
+    }
     return () => {
       console.log("useeffect cleanup");
     };
