@@ -9,7 +9,7 @@ import { AuthProvider, useAuth } from "./hooks/auth";
 import Success from "./pages/admin/success";
 import MyFiles from "./pages/admin/files";
 import Home from "./pages/home";
-import License from "./pages/_license";
+import License from "./pages/license";
 
 function App() {
   return (
