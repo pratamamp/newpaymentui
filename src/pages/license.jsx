@@ -6,6 +6,7 @@ const API_URL = process.env.REACT_APP_API_EXTRACT;
 
 function License() {
   const [licenseSuccess, setLicense] = useState(false);
+  const [licenseData, setData] = useState(null);
   const [inputText, setInput] = useState("");
 
   function submitLicense(e) {
@@ -16,7 +17,7 @@ function License() {
         .post(`${API_URL}/api/license/${e.target[0].value}`)
         .then((response) => {
           setLicense(true);
-          console.log("license exist!");
+          setData(response.data);
         })
         .catch((err) => {
           console.error("License not found");
@@ -30,8 +31,13 @@ function License() {
 
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-br from-purple-800 to-blue-400">
-      {licenseSuccess ? (
-        <Certificate />
+      {licenseData ? (
+        <Certificate
+          username={licenseData.name}
+          licenseDate={licenseData.date}
+          persilID={licenseData.nib}
+          orderID={licenseData.id_order}
+        />
       ) : (
         <>
           <img
