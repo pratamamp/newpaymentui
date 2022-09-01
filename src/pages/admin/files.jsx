@@ -42,8 +42,9 @@ function MyFiles() {
 
   const openInNewTab = (url) => {
     let element = document.createElement("a");
-    element.setAttribute("href", "data:text/plain;charset=utf-8");
-    element.setAttribute("download", url);
+    element.setAttribute("href", "https://" + url);
+    element.setAttribute("target", "_self");
+    element.style.display = "none";
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
