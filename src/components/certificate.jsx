@@ -42,7 +42,7 @@ function Certificate({ username, email, licenseDate, persilID, orderID }) {
       <div className="flex justify-center items-center w-full h-full select-none">
         <div className="border-2 border-yellow-400 w-[97%] h-[97%] rounded-xl">
           <div className="w-1/2 mx-8 mt-4 border-b-[2px] border-slate-400">
-            <h1 className=" text-4xl tracking-wide">CERTIFICATE</h1>
+            <h1 className=" text-4xl tracking-wide">VERIFICATION</h1>
             <p className="text-[#cd526a] font-bold text-lg tracking-widest">
               OF APPRECIATION
             </p>

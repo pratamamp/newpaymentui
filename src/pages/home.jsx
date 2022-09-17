@@ -38,7 +38,7 @@ function Home() {
                     <Link to="/about">About</Link>
                   </li>
                   <li className="text-gray-300 md:px-4 transition hover:text-sky-300">
-                    <Link to="/license">License</Link>
+                    <Link to="/verification">Verification</Link>
                   </li>
                 </ul>
               </div>
