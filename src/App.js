@@ -30,9 +30,7 @@ function App() {
             <Route index element={<BoardHome />} />
             <Route path="map" element={<MapViewer />} />
             <Route path="cart" element={<Cart />} />
-            <Route path="success" element={<Success />}>
-              <Route path=":id" element={<Cart />} />
-            </Route>
+            <Route path="success" element={<Success />} />
             <Route path="myfiles" element={<MyFiles />} />
           </Route>
         </Route>
