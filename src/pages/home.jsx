@@ -22,11 +22,18 @@ function Home() {
           <div className="flex justify-between">
             <div className="flex space-x-4">
               {/* logo */}
-              <div>
+              {/* <div>
                 <a href="#" className="flex items-center py-5 px-2 text-white">
                   <SiGentoo className="w-10 h-10" />
                   <span className="mx-3 text-xl font-bold">PayLand</span>
                 </a>
+              </div> */}
+              <div className="py-5 px-2">
+                <img
+                  src={process.env.PUBLIC_URL + "/logo.png"}
+                  alt="logo-atrbpn"
+                  className="w-12 h-12"
+                />
               </div>
               {/* primary nav */}
               <div className="hidden md:flex items-center space-x-1">

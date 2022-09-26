@@ -41,10 +41,22 @@ function Login() {
         </div>
         <div className="w-full py-2 z-20 h-screen ">
           <div className="flex justify-between">
-            <div className="h-8 flex space-x-2 items-center my-2">
-              <SiGentoo className="w-10 h-10" />
+            <div className="h-8 flex space-x-2 items-center my-2 px-4">
+              {/* <SiGentoo className="w-10 h-10" />
               <span className="text-2xl font-bold text-gray-100 font-lato">
                 PayLand
+              </span> */}
+              <div>
+                <img
+                  src={process.env.PUBLIC_URL + "/logo.png"}
+                  alt="atrbpn logo"
+                  className="w-14 h-14"
+                />
+              </div>
+              <span className="text-gray-100 text-left text-sm">
+                Kementerian Agraria dan Tata Ruang
+                <br />
+                <span>Badan Pertanahan Nasional</span>
               </span>
             </div>
             <h2 className="text-xs flex">
