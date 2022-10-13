@@ -28,6 +28,7 @@ function Sidebar() {
           <br />
           <span>Badan Pertanahan Nasional</span>
         </span> */}
+        
         <div aria-hidden="true" className="flex space-x-1">
           <SiGentoo className="w-6 h-6 text-orange-400" />
         </div>
