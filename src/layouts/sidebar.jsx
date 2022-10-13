@@ -16,7 +16,7 @@ function Sidebar() {
   return (
     <div className=" hidden w-[18%] bg-white border-r-2 justify-center  border-gray-100/75 lg:block">
       <div className="flex items-center p-2">
-        <div>
+        {/* <div>
           <img
             src={process.env.PUBLIC_URL + "/logo.png"}
             alt="logo atrbpn"
@@ -27,13 +27,13 @@ function Sidebar() {
           Kementerian Agraria dan Tata Ruang
           <br />
           <span>Badan Pertanahan Nasional</span>
-        </span>
-        {/* <div aria-hidden="true" className="flex space-x-1">
+        </span> */}
+        <div aria-hidden="true" className="flex space-x-1">
           <SiGentoo className="w-6 h-6 text-orange-400" />
         </div>
         <span className="text-xl ml-2 font-bold text-orange-300 font-lato">
           PayLand
-        </span> */}
+        </span>
       </div>
       <div className="pl-2 py-2 w-full h-[calc(100vh_-_5.5rem)]">
         <ul className="w-full flex flex-col space-y-4 text-gray-400 text-sm font-poppins">

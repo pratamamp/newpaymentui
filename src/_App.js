@@ -10,6 +10,7 @@ import Cart from "./pages/admin/cart";
 function App() {
   return (
     <AuthProvider>
+      
       <Routes>
         <Route path="/" index element={<Home />} />
         <Route path="admin" element={<Layout />}>
